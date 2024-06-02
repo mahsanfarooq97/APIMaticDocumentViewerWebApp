@@ -16,21 +16,19 @@ interface PageState {
 }
 
 // Define the async thunk to fetch pages
-export const getPages = createAsyncThunk<
-  PageData[],
-  void,
-  { rejectValue: string }
->("getPages", async (inputValue, { rejectWithValue }) => {
-  try {
-    const response = await axios.get(
-      "https://gist.githubusercontent.com/thehappybug/65a466dcdb0908767057b80f0cb7ea5d/raw/6f10747c5feb7ce91b83392f2cee23ae06b20fe6/doc.json"
-    );
-    return response.data?.Pages;
-  } catch (error: any) {
-    console.log("Error", error);
-    return rejectWithValue(error.message);
+export const getPages = createAsyncThunk<PageData[], string>(
+  "getPages",
+  async (url) => {
+    try {
+      const response = await axios.get(url?.trim());
+      return response.data?.Pages;
+    } catch (error: any) {
+      console.log("Error", error);
+      alert(error?.message)
+      throw error; 
+    }
   }
-});
+);
 
 // Define the initial state
 const initialState: PageState = {

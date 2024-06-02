@@ -60,11 +60,13 @@ export default function SideMenu({ pages }: AppRoutesProps) {
   const drawer = (
     <div>
       <Toolbar />
-      <Grid sx={{ pb: 2, pt: 2 }} container justifyContent={"center"}>
-        <Button onClick={downloadJSON} variant="contained">
-          Export
-        </Button>
-      </Grid>
+      {pages?.length > 0 && (
+        <Grid sx={{ pb: 2, pt: 2 }} container justifyContent={"center"}>
+          <Button onClick={downloadJSON} variant="contained">
+            Export
+          </Button>
+        </Grid>
+      )}
       <Divider />
       <List>
         {pages?.map((page) => {

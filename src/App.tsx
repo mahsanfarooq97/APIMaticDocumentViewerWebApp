@@ -13,9 +13,6 @@ const drawerWidth = 240;
 export default function App() {
   const dispatch = useDispatch<AppDispatch>();
   const pages = useSelector((state: RootState) => state.pageSlice.Pages);
-  // useEffect(() => {
-  //   dispatch(getPages());
-  // });
   return (
     <BrowserRouter>
       <Box sx={{ display: "flex" }}>
