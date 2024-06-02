@@ -51,9 +51,9 @@ export default function SideMenu({ pages }: AppRoutesProps) {
       setMobileOpen(!mobileOpen);
     }
   };
-  const downloadPDF = () => {
+  const downloadJSON = () => {
     exportDocumentation(pages, () => {
-      setMessage("PDF downloaded successfuly");
+      setMessage("JSON downloaded successfuly");
       setOpenToast(true);
     });
   };
@@ -61,7 +61,7 @@ export default function SideMenu({ pages }: AppRoutesProps) {
     <div>
       <Toolbar />
       <Grid sx={{ pb: 2, pt: 2 }} container justifyContent={"center"}>
-        <Button onClick={downloadPDF} variant="contained">
+        <Button onClick={downloadJSON} variant="contained">
           Export
         </Button>
       </Grid>
